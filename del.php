@@ -1,7 +1,7 @@
 <?php
 $delId = $_POST['delid'];
 
-$con=mysqli_connect("localhost","chengzhi","tjxchengzhi1027","chengzhi");
+$con=mysqli_connect("localhost","chengzhi","xxxxxxxxx","chengzhi");
 // 检测连接
 if (mysqli_connect_errno())
 {

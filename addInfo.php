@@ -14,7 +14,7 @@ $price = $_POST['price'];
 
 $servername = "localhost";
 $username = "chengzhi";
-$password = "tjxchengzhi1027";
+$password = "xxxxxxxxx";
 $dbname = "chengzhi";
 
 

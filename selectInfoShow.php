@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "chengzhi";
-$password = "tjxchengzhi1027";
+$password = "xxxxxxxxx";
 $dbname = "chengzhi";
  
 // 创建连接
