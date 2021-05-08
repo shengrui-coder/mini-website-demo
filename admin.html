@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="shortcut icon" href="logo.gif" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<title>新诚苗圃商品信息管理系统</title>
+	<style type="text/css">
+		h1{
+			text-align: center;
+		}
+		#n{
+			text-align: center;
+			margin: 5px auto;
+			width: 100%;
+		}
+		label{
+			font-weight: bold;
+		}
+	</style>
+</head>
+	<body width="100%">
+       
+
+        <div>
+            
+            
+
+            
+            		<div class="container" style="padding-top: 40px;"><!--整个盒子居中-->
+            		<nav id="n">
+        			<img id="logo" src="logo.gif" alt="logo" width="230px" height="230px" style="margin:0 auto;padding:0"/>
+        			<h2 style="color:green;width:100%">商品信息管理系统</h2>
+		
+        	</nav>
+			<table class="table table-hover table-bordered text-center">
+				<tr >
+					<td colspan="7">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-8">
+									<input  type="text" class="form-control secbox" />
+								</div>
+								<div class="col-md-3">
+									<button class="btn btn-info sec">搜索</button><!--搜索确定-->
+									<button class="btn btn-info add" data-toggle="modal" data-target="#addModal">新增</button>
+									<!--data-toggle data-target 属性插入bootstrap事件自带的模态框事件-->
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+    				<th>编号</th>
+                    <th>品名</th>
+                    <th>尺寸</th>
+                    <th>详细信息</th>
+                    <th>售价</th>
+                    <th>图片地址</th>
+                    <th>操作</th>
+				</tr>
+			</table>
+			
+		
+				<!--增加模态框-->
+		<div class="modal fade addmd" tabindex="-1" role="dialog" id="addModal">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			          <h4 class="modal-title" style="text-align:center">数据新增</h4>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        
+			      </div>
+			      <div class="modal-body">
+			       	<form method="post" action="addInfo.php" class="col" style="margin:5px" enctype="multipart/form-data">
+        	  <div class="form-row">
+        	    <div class="input-group mb-3">
+        		    <div class="input-group-prepend">
+        		      <span class="input-group-text">编号</span>
+        		    </div>
+        		    <input name="id" type="text" class="form-control" placeholder="统一按照3位数字编号，例：001" value="">
+        		</div>
+        	   <div class="input-group mb-3">
+        		    <div class="input-group-prepend">
+        		      <span class="input-group-text">品名</span>
+        		    </div>
+        		    <input name="name" type="text" class="form-control" placeholder="" value="">
+        		</div>
+        	    <div class="input-group mb-3">
+        		    <div class="input-group-prepend">
+        		      <span class="input-group-text">尺寸</span>
+        		    </div>
+        		    <input name="size" type="text" class="form-control" placeholder="" value="">
+        		    <div class="input-group-append">
+        		    
+        		  </div>
+        		</div>
+        		<div class="input-group">
+        		  <div class="input-group-prepend">
+        		    <span class="input-group-text">详细信息</span>
+        		  </div>
+        		  <textarea name="detail" class="form-control" aria-label="With textarea" value=""></textarea>
+        		</div>
+        		<div class="input-group mb-3" style="margin:10px auto">
+        		  <div class="input-group-prepend">
+        		    <span class="input-group-text">售价¥</span>
+        		  </div>
+        		  <input name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="">
+        		 
+        		</div>
+        	    <div class="input-group mb-3">
+        			  <input type="file" id="file" name="file">
+        		</div>
+        		
+        		<div style="margin:10px auto">
+        		  <input type="submit" class="btn btn-info" value="提交" style="text-align:center"> 
+        		  <button type="button" class="btn btn-danger cancel" data-dismiss="modal">取消</button>
+        		</div>
+        		
+        	  </div>
+        	  
+        	</form>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div>	
+			
+		
+		<!--修改模态框-->
+		<div class="modal fade up" tabindex="-1" role="dialog" id="updateModal">
+			  <form action="update.php" method="post">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			          <h4 class="modal-title">数据修改</h4>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        
+			      </div>
+			      <div class="modal-body">
+			      	<input type="hidden" name="id" id="id" class="form-control" />
+			       		<div class="form-group">
+			       			<input type="text" placeholder="品名" name="name" id="name" class="form-control"/>
+			       		</div>
+			       		<div class="form-group">
+			       			<input type="text" placeholder="尺寸" name="size" id="size" class="form-control"/>
+			       		</div>
+			       		<div class="form-group">
+			       			<input type="text" placeholder="详细信息" name="detail" id="detail" class="form-control" />
+			       		</div>
+			       		<div class="form-group">
+			       			<input type="text" placeholder="售价" name="price" id="price" class="form-control" />
+			       		</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        <input type="submit" value="修改">
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</form>
+			</div>
+		</div>
+		
+		<!--删除模态框-->
+		<div class="modal fade up" tabindex="-1" role="dialog" id="delModal">
+			  <form action="del.php" method="post">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			          <h4 class="modal-title">确认删除吗？</h4>
+			      </div>
+			      <div class="modal-body">
+			       		
+			       		    <input type="hidden" placeholder="编号" name="delid" id="delid" class="form-control" />
+			       		
+			         <input type="submit" value="删除">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</form>
+			</div>
+		</div>
+		
+		
+		
+
+	
+            
+            
+        
+        
+        
+        
+        <script type="text/javascript" charset="utf-8">
+               
+                var Json = {};
+                window.onload = function(){
+                  $.get("selectInfoShow.php",function(res,status){
+                    let receData =  JSON.parse(res);
+                    Json = receData;
+                    var str=''
+					for (var i=0;i<receData.length;i++){
+					    str+='<tr><td>'+receData[i].id+'</td><td>'+receData[i].name+'</td><td>'+receData[i].size+'</td><td>'+receData[i].detail+'</td><td>'+receData[i].price+'</td><td><a href="'+receData[i].file+'">'+receData[i].file+'</a></td><td><button class="btn btn-primary btn-xs update" data-toggle = "modal" data-target = "#updateModal" onclick="updateBtn('+i+')">修改</button> <button class="btn btn-danger btn-xs del" data-toggle = "modal" data-target = "#delModal" onclick="delBtn('+i+')">删除</button</td></tr>';
+					}
+					
+					$(".table").append(str);
+                  });
+                }
+                
+                function updateBtn(e){
+                	$("#id").val(Json[e].id);
+                    $("#name").val(Json[e].name);
+                    $("#size").val(Json[e].size);
+                    $("#detail").val(Json[e].detail);
+                    $("#price").val(Json[e].price);
+                }
+                
+                function delBtn(e){
+                    $("#delid").val(Json[e].id);
+                }
+
+          
+			
+			
+			
+			
+// 			//增加
+// 			$(".que_add").click(function(){//点开增加按钮弹出的模态框后的确定按钮事件
+// 				var arr=[]
+// 				var num=$(".table tr").length
+// 				var str=''
+// 				var id=$(this).parent().siblings().find("input").val()//找到input框的内容并存放在命名为id的变量中
+// 				var name=$(this).parent().siblings().find("input:not(:first)").val()//找到input框的内容并存放在命名为name的变量中
+// 				$(this).parent().siblings().find("input").each(function(){//将两个input的内容用each方法遍历并用push方法逐个存放到叫arr的数组中
+// 					arr.push($(this).val())	
+// 					$(this).val("")
+// 				})
+// 				if (id==0||name==0) {//判断内容是否为空，否则弹窗"请输入一点东西"
+// 					alert("请输入一点东西")
+// 				} else{//是则加入到table中（表格）并把模态框关闭
+// 					str='<tr><td>'+(num-1)+'</td><td>'+arr[0]+'</td><td>'+arr[1]+'</td><td><button class="btn btn-primary btn-xs update" data-toggle = "modal" data-target = "#updateModal">修改</button> <button class="btn btn-danger btn-xs del">删除</button></td></tr>'
+// 					$("table").append(str)
+// 					$(".addmd").modal("hide")
+// 				}
+// 			})
+			
+			
+			
+			
+						//删除
+// 			$(document).on("click",".del",function(){//找到点击的类目为del的按钮实现删除
+// 				$(this).parents("tr").remove()
+// 			})
+			
+			
+			
+			
+// 			//对象缓存
+// 			var _this=null
+// 			$(document).on("click",".update",function(){
+// 				_this=$(this).parents("tr")//缓存类名为update的父级tr项
+// 			})
+// 			//确定修改
+// 			$(".que_update").click(function(){//同增加事件
+// 				var arr=[]
+// 				$(this).parent().siblings().find("input").each(function(){
+// 					arr.push($(this).val())
+// 					$(this).val("")
+// 				})
+// 				_this.find("td:not(:first):not(:last)").each(function(i){//同增加事件，但这里因为有arr[i]所以要在function()括号加个变量i
+// 					$(this).text(arr[i])
+// 				})
+// 				//弹出模态框
+// 				$(".up").modal("hide")
+// 			})
+			
+			
+			
+			
+			
+						//搜索
+			$(".sec").click(function(){//搜索框的点击事件
+				var data=$(".secbox").val()
+				if (data==0) {//判断搜索框是否为空，是则弹窗"请输入一点东西"
+					alert("请输入一点东西")
+				}else{//否则搜索内容为搜索框（.secbox）里的内容（val）的项将他的背景颜色改成淡蓝色
+					$(".table tr:not(:first):contains("+data+")").css("background","#D9EDF7");
+					$('html , body').animate({scrollTop: $(".table tr:not(:first):contains("+data+")").offset().top}, "fast");
+					$(this).blur(function(){//离开搜索框是变成默认颜色
+						$(".secbox").val("")
+						$(".table tr").css("background","#fff")
+					})
+				}
+			})
+        </script>
+        
+
+	</body>
+</html>
